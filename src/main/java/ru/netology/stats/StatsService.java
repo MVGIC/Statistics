@@ -18,24 +18,43 @@ public class StatsService {
         return sum / 12;
     }
 
-    public long findMax(long[] purchases) {
-        long currentMax = purchases[0];
-        for (long purchase : purchases) {
-            if (currentMax < purchase) {
-                currentMax = purchase;
-            }
+    public long findMaxMonth(long[] purchases) {
+        int maxIndex = 0;
+        for (int i = 1; i < purchases.length; i++) {
+            if (purchases[maxIndex] <= purchases[i])
+                maxIndex = i;
         }
-        return currentMax;
+        return maxIndex + 1;
     }
 
-    public long findMin(long[] purchases) {
-        long currentMin = purchases[0];
-        for (long purchase : purchases) {
-            if (currentMin > purchase) {
-                currentMin = purchase;
+
+    public long findMinMonth(long[] purchases) {
+        int minIndex = 0;
+        for (int i = 1; i < purchases.length; i++) {
+            if (purchases[minIndex] > purchases[i])
+                minIndex = i;
+        }
+        return minIndex + 1;
+    }
+
+    public long findBelowAverage(long[] purchases) {
+        int amountBelow = 0;
+        for (long currentMax : purchases) {
+            if (currentMax < 15) {
+                amountBelow++;
             }
         }
-        return currentMin;
+        return amountBelow;
+    }
+
+    public long findAboveAverage(long[] purchases) {
+        int amountAbove = 0;
+        for (long currentMax : purchases) {
+            if (currentMax > 15) {
+                amountAbove++;
+            }
+        }
+        return amountAbove;
     }
 
 }

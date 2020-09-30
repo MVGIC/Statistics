@@ -1,7 +1,7 @@
 package ru.netology.stats;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
+
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -32,24 +32,46 @@ class StatsServiceTest {
     }
 
     @Test
-    void FindMax() {
+    void FindMaxMonth() {
         long[] purchases = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        long expected = 20;
+        long expected = 8;
 
         StatsService service = new StatsService();
 
-        long actual = service.findMax(purchases);
+        long actual = service.findMaxMonth(purchases);
         assertEquals(expected, actual);
     }
 
     @Test
-    void Findmin() {
+    void FindMinMonth() {
         long[] purchases = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        long expected = 7;
+        long expected = 9;
 
         StatsService service = new StatsService();
 
-        long actual = service.findMin(purchases);
+        long actual = service.findMinMonth(purchases);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void FindBelowAverage() {
+        long[] purchases = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        long expected = 5;
+
+        StatsService service = new StatsService();
+
+        long actual = service.findBelowAverage(purchases);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void FindAboveAverage() {
+        long[] purchases = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        long expected = 5;
+
+        StatsService service = new StatsService();
+
+        long actual = service.findAboveAverage(purchases);
         assertEquals(expected, actual);
     }
 }
